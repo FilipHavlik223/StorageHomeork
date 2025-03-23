@@ -66,6 +66,23 @@ def min_prouct():
     for product in min_products:
         print(f"{product['name']}, s cenou: {product['price']}Kč")
 
+def max_product():
+    max_price = int(products[0]['price'])
+    max_products = []
+
+    for product in products:
+        price = int(product['price'])
+
+        if price > max_price:
+            max_price = price
+            max_products = [product]
+        elif price == max_price:
+            max_products.append(product)
+
+    print("Nejražší produkty jsou: ")
+    for product in max_products:
+        print(f"{product['name']}, s cenou: {product['price']}Kč")
+
 
 def menu():
     print("Vítej ve skladu")
@@ -74,7 +91,8 @@ def menu():
     print("2. Přidání položky")
     print("3. Vyhledání položky")
     print("4. Celková cena všech položek")
-    print("5. Zobrazení nejlevnějších položek\n")
+    print("5. Zobrazení nejlevnějších položek")
+    print("6. Zobrazení nejražších položek\n")
 
 
     choice = int(input("Volba: "))
@@ -108,6 +126,13 @@ def menu():
         min_prouct()
         print("")
         menu()
+
+    elif choice == 6:
+        print("Vyhledání nejdražších produktů:")
+        max_product()
+        print("")
+        menu()
+
 
 
     else:
