@@ -83,6 +83,13 @@ def max_product():
     for product in max_products:
         print(f"{product['name']}, s cenou: {product['price']}Kč")
 
+def price_average():
+    total = 0
+    for product in products:
+        total += int(product['price'])
+    average_price = total / len(products)
+    print(f"Průměrná cena všech prouktů je {average_price:.2f} Kč")
+
 
 def menu():
     print("Vítej ve skladu")
@@ -92,7 +99,9 @@ def menu():
     print("3. Vyhledání položky")
     print("4. Celková cena všech položek")
     print("5. Zobrazení nejlevnějších položek")
-    print("6. Zobrazení nejražších položek\n")
+    print("6. Zobrazení nejražších položek")
+    print("7. Zobrazení průměrné ceny všech položek")
+    print("8. Úprava produktů\n")
 
 
     choice = int(input("Volba: "))
@@ -133,13 +142,18 @@ def menu():
         print("")
         menu()
 
+    elif choice == 7:
+        print("Vyhledání průměru cen: ")
+        price_average()
+        print("")
+        menu()
 
+    elif choice == 8:
+        print()
 
     else:
         print("Zadal jsi špatně!\n")
         menu()
-
-
 
 
 
