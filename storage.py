@@ -17,7 +17,7 @@ def print_products():
 
 def add_product():
     product_name = input("Název produktu:")
-    product_price = input("Název cenu:")
+    product_price = input("Cena prouktu:")
     product2 = {
         'name': product_name,
         'price': product_price
@@ -49,6 +49,23 @@ def price_sum():
         total += product['price']
     print(f"Celková cena všeho na skladu je {total} Kč")
 
+def min_prouct():
+    min_price = int(products[0]['price'])
+    min_products = []
+
+    for product in products:
+        price = int(product['price'])
+
+        if price < min_price:
+            min_price = price
+            min_products = [product]
+        elif price == min_price:
+            min_products.append(product)
+
+    print("Nejlevnější produkty jsou: ")
+    for product in min_products:
+        print(f"{product['name']}, s cenou: {product['price']}Kč")
+
 
 def menu():
     print("Vítej ve skladu")
@@ -56,7 +73,8 @@ def menu():
     print("1. Výpis položek")
     print("2. Přidání položky")
     print("3. Vyhledání položky")
-    print("4. Celková cena všech položek\n")
+    print("4. Celková cena všech položek")
+    print("5. Zobrazení nejlevnějších položek\n")
 
 
     choice = int(input("Volba: "))
@@ -85,11 +103,17 @@ def menu():
         print("")
         menu()
 
+    elif choice == 5:
+        print("Vyhledání nejlevnějších produktů:")
+        min_prouct()
+        print("")
+        menu()
 
 
     else:
         print("Zadal jsi špatně!\n")
         menu()
+
 
 
 
