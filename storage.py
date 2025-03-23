@@ -3,12 +3,20 @@ from random import choice
 products = [
     {
         "name": "Audi",
-        "price": 50
+        "price": 2000000
     },
     {
         "name": "BMW",
-        "price": 30,
-    }
+        "price": 3000000
+    },
+    {
+        "name": "Audio kniha",
+        "price": 200
+    },
+    {
+        "name": "Brýle",
+        "price": 200
+    },
 ]
 
 
@@ -150,7 +158,8 @@ def menu():
     print("6. Zobrazení nejražších položek")
     print("7. Zobrazení průměrné ceny všech položek")
     print("8. Úprava produktů")
-    print("9. Smazání produktu\n")
+    print("9. Smazání produktu")
+    print("10. Konec\n")
 
 
     choice = int(input("Volba: "))
@@ -209,6 +218,8 @@ def menu():
         print("")
         menu()
 
+    elif choice == 10:
+        exit()
 
     else:
         print("Zadal jsi špatně!\n")
