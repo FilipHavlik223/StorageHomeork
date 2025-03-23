@@ -117,6 +117,25 @@ def edit_product():
     except ValueError:
         print("Zadej Prosím platné číslo produktu a cenu!")
 
+def remove_product():
+    product_numbers()
+
+    if not products:
+        print("Není zde co smazat.")
+        return
+    try:
+        choice = int(input("\nZadej číslo produktu k smazání: ")) - 1
+
+        if 0 <= choice < len(products):
+            removed_product = products.pop(choice)
+            print(f"Produkt {removed_product['name']} byl nahrazen!")
+        else:
+            print("Chyba: Špatně zadané číslo")
+
+    except ValueError:
+        print("Zadej prosím platné číslo")
+
+
 
 
 
@@ -130,7 +149,8 @@ def menu():
     print("5. Zobrazení nejlevnějších položek")
     print("6. Zobrazení nejražších položek")
     print("7. Zobrazení průměrné ceny všech položek")
-    print("8. Úprava produktů\n")
+    print("8. Úprava produktů")
+    print("9. Smazání produktu\n")
 
 
     choice = int(input("Volba: "))
@@ -178,10 +198,17 @@ def menu():
         menu()
 
     elif choice == 8:
-        print("Úprava výrobku na skladě")
+        print("Úprava výrobku na skladě:")
         edit_product()
         print("")
         menu()
+
+    elif choice == 9:
+        print("Smazání produktu:")
+        remove_product()
+        print("")
+        menu()
+
 
     else:
         print("Zadal jsi špatně!\n")
