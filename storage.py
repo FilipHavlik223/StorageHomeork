@@ -27,18 +27,27 @@ def add_product():
 
 def product_search():
     key = input("Hledaný výrobek: ")
+
     if len(key) == 0:
         print("Na skladě není žádný výrobek")
         menu()
+
     query = []
     for product in products:
         if len(key) > len(product['name']):
             continue
         elif key.lower() == product['name'][0:len(key)].lower():
             query.append(product)
+
     print("Výsledek hledání: ")
     for item in query:
         print(f"{item['name']} - {item['price']} Kč")
+
+def price_sum():
+    total = 0
+    for product in products:
+        total += product['price']
+    print(f"Celková cena všeho na skladu je {total} Kč")
 
 
 def menu():
@@ -59,14 +68,23 @@ def menu():
         menu()
 
     elif choice == 2:
-        print("Přidání polžky:")
+        print("Přidání položky:")
         add_product()
         print("")
         menu()
 
     elif choice == 3:
-        print("Vyhledávání položky")
+        print("Vyhledávání položky:")
         product_search()
+        print("")
+        menu()
+
+    elif choice == 4:
+        print("Celková cena:")
+        price_sum()
+        print("")
+        menu()
+
 
 
     else:
