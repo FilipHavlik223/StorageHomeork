@@ -1,3 +1,5 @@
+from random import choice
+
 products = [
     {
         "name": "Audi",
@@ -17,7 +19,7 @@ def print_products():
 
 def add_product():
     product_name = input("Název produktu:")
-    product_price = input("Cena prouktu:")
+    product_price = input("Cena produktu:")
     product2 = {
         'name': product_name,
         'price': product_price
@@ -90,6 +92,33 @@ def price_average():
     average_price = total / len(products)
     print(f"Průměrná cena všech prouktů je {average_price:.2f} Kč")
 
+def product_numbers():
+    print("\nSeznam prouktů")
+    for i, product in enumerate(products, start=1):
+        print(f"{i}. {product['name']} s cenou {product['price']} Kč")
+
+def edit_product():
+    product_numbers()
+
+    try:
+        choice = int(input("\nZadej číslo produktu k upravení: ")) -1
+
+        if 0 <= choice < len(products):
+            new_name = input("Zadej nové jméno produktu: ")
+            new_price = int(input("Zadej novou cenu produktu: "))
+
+            products[choice]['name'] = new_name
+            products[choice]['price'] = int(new_price)
+
+            print("\nProdukt byl nahrazen!")
+        else:
+            print("Chyba: Špatně zadané číslo")
+
+    except ValueError:
+        print("Zadej Prosím platné číslo produktu a cenu!")
+
+
+
 
 def menu():
     print("Vítej ve skladu")
@@ -149,7 +178,10 @@ def menu():
         menu()
 
     elif choice == 8:
-        print()
+        print("Úprava výrobku na skladě")
+        edit_product()
+        print("")
+        menu()
 
     else:
         print("Zadal jsi špatně!\n")
